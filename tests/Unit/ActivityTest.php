@@ -41,4 +41,13 @@ class ActivityTest extends TestCase
         $model->delete();
         $this->assertDatabaseHas('activities', ['model_id'=>$model->id, 'type'=>'item_deleted']);
     }
+
+    /** @test */
+    public function activities_is_also_deleted_when_model_is_deleted()
+    {
+        $this->authUser();
+        $model = factory(Item::class)->create();
+        $model->delete();
+        $this->assertDatabaseMissing('activities', ['model_id'=>$model->id, 'type' => 'item_created']);
+    }
 }

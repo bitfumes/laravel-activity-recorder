@@ -49,5 +49,6 @@ class TestCase extends BaseTestCase
     {
         $user = factory(User::class)->create();
         $this->actingAs($user);
+        return $user;
     }
 }
