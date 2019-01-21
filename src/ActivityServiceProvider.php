@@ -15,6 +15,9 @@ class ActivityServiceProvider extends ServiceProvider
     {
         $this->loadMigrationsFrom(__DIR__ . '/database/migrations');
         $this->mergeConfigFrom(__DIR__ . '/../config/activity.php', 'activity');
+        $this->publishes([
+            __DIR__ . '/../config/activity.php' => config_path('activity.php'),
+        ], 'activity:config');
     }
 
     /**
