@@ -34,5 +34,9 @@
                 "Bitfumes\\Activity\\ActivityServiceProvider"
             ]
         }
+    },
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true
     }
 }

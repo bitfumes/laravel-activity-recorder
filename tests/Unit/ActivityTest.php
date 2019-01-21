@@ -50,4 +50,13 @@ class ActivityTest extends TestCase
         $model->delete();
         $this->assertDatabaseMissing('activities', ['model_id'=>$model->id, 'type' => 'item_created']);
     }
+
+    /** @test */
+    public function activity_know_about_its_user()
+    {
+        $user     = $this->authUser();
+        $model    = factory(Item::class)->create();
+        $activity = Activity::first();
+        $this->assertEquals($user->id, $activity->user->id);
+    }
 }
